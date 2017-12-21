@@ -1,11 +1,14 @@
 package com.example.frosterskys.androidapp.restservice;
 
 import android.util.Log;
+import android.view.Gravity;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.frosterskys.androidapp.R;
 import com.example.frosterskys.androidapp.entity.RamblerPreviewNews;
 import com.example.frosterskys.androidapp.restclient.RamblerNewsClient;
+import com.example.frosterskys.androidapp.viewentity.RamblerNewsViewEntity;
 import com.loopj.android.http.*;
 
 import org.json.*;
@@ -22,7 +25,7 @@ import cz.msebera.android.httpclient.Header;
  */
 
 public class RamblerNewsService {
-    public void getPreviewNews(String regionName, final TextView textView) throws JSONException {
+    public void getPreviewNews(String regionName, final LinearLayout linearLayout) throws JSONException {
         final List<RamblerPreviewNews> previewNewsList = new ArrayList<>();
         RamblerNewsClient.get("/news/getRamblerNews/"+regionName, null, new JsonHttpResponseHandler() {
 
@@ -41,15 +44,17 @@ public class RamblerNewsService {
                         e.printStackTrace();
                     }
                 }
-                String text = "";
                 for(RamblerPreviewNews news : previewNewsList){
-                    text+=news.getTopic();
-                    text+=news.getImageLink()+"\n";
-                    text+=news.getLink()+"\n\n";
+                    LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    param.gravity = Gravity.START;
+                    RamblerNewsViewEntity ramblerNewsViewEntity = new RamblerNewsViewEntity(
+                            linearLayout.getContext(),
+                            news.getTopic(),
+                            news.getImageLink()
+                    );
+                    linearLayout.addView(ramblerNewsViewEntity.getLinearLayout(), param);
                 }
-                textView.setText(text);
             }
         });
-
     }
 }

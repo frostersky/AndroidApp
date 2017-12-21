@@ -2,6 +2,7 @@ package com.example.frosterskys.androidapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.frosterskys.androidapp.restservice.RamblerNewsService;
@@ -16,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         RamblerNewsService ramblerNewsService= new RamblerNewsService();
         try {
-            TextView myTextView = (TextView) findViewById(R.id.textView1);
-            ramblerNewsService.getPreviewNews("Воронеж", myTextView);
+            LinearLayout linearLayout = (LinearLayout) findViewById(R.id.newsLinearLayout);
+            ramblerNewsService.getPreviewNews("Воронеж", linearLayout);
         } catch (JSONException e) {
             e.printStackTrace();
         }

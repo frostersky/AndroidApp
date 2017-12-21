@@ -8,7 +8,7 @@ import com.loopj.android.http.*;
 
 public class RamblerNewsClient {
 
-    private static final String BASE_URL = "http://192.168.0.3:1337";
+    private static final String BASE_URL = "http://10.0.2.2:1337";//"http://192.168.0.3:1337";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 
