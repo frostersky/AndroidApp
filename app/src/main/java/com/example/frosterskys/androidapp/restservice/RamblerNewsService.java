@@ -50,7 +50,8 @@ public class RamblerNewsService {
                     RamblerNewsViewEntity ramblerNewsViewEntity = new RamblerNewsViewEntity(
                             linearLayout.getContext(),
                             news.getTopic(),
-                            news.getImageLink()
+                            news.getImageLink(),
+                            news.getLink()
                     );
                     linearLayout.addView(ramblerNewsViewEntity.getLinearLayout(), param);
                 }

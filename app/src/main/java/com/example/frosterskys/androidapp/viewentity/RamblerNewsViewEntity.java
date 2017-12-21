@@ -20,7 +20,7 @@ public class RamblerNewsViewEntity{
 
     private LinearLayout linearLayout;
 
-    public RamblerNewsViewEntity(final Context context, String newsTitle, String imageRef) {
+    public RamblerNewsViewEntity(final Context context, String newsTitle, String imageRef, final String newsRef) {
         linearLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.rambler_news, null);
         ImageView imageView = (ImageView) linearLayout.getChildAt(0);
         Picasso.with(context).load(imageRef).into(imageView);
@@ -30,6 +30,7 @@ public class RamblerNewsViewEntity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, RamblerNewsActivity.class);
+                intent.putExtra("newsRef", newsRef);
                 context.getApplicationContext().startActivity(intent);
             }
         });
