@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.frosterskys.androidapp.entity.RamblerPreviewNews;
 import com.example.frosterskys.androidapp.restservice.RamblerNewsService;
 
 import org.json.JSONException;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         RamblerNewsService ramblerNewsService= new RamblerNewsService();
         try {
             LinearLayout linearLayout = (LinearLayout) findViewById(R.id.newsLinearLayout);
-            ramblerNewsService.getPreviewNews("Воронеж", linearLayout);
+            ramblerNewsService.setPreviewNews("Воронеж", linearLayout);
         } catch (JSONException e) {
             e.printStackTrace();
         }

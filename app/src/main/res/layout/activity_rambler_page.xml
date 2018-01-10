@@ -6,8 +6,31 @@
     android:layout_height="match_parent"
     tools:context="com.example.frosterskys.androidapp.RamblerNewsActivity">
 
-    <WebView
-        android:id="@+id/ramblerNewsWebPage"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/article_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"/>
+
+    </RelativeLayout>
+
+
 </android.support.constraint.ConstraintLayout>
