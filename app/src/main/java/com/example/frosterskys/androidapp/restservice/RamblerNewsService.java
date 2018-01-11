@@ -76,10 +76,13 @@ public class RamblerNewsService {
 
         Elements sourceElements = doc.select(".big-title__source-n-date a");
         ramblerFullNews.setSource(sourceElements.get(0).text());
-        ramblerFullNews.setTime(sourceElements.get(1).text());
+        //ramblerFullNews.setTime(sourceElements.get(1).text());
 
         Element imageRefElement = doc.select(".article__main-image--reduced img").get(0);
         ramblerFullNews.setImageRef(imageRefElement.attr("data-src"));
+
+        Element photoOwnerElement = doc.select(".article__main-image-description").get(0);
+        ramblerFullNews.setPhotoOwner(photoOwnerElement.text());
         return ramblerFullNews;
 
     }

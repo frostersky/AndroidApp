@@ -11,6 +11,7 @@ import com.example.frosterskys.androidapp.common.MyLeadingMarginSpan2;
 import com.example.frosterskys.androidapp.entity.RamblerFullNews;
 import com.example.frosterskys.androidapp.entity.RamblerPreviewNews;
 import com.example.frosterskys.androidapp.restservice.RamblerNewsService;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -26,6 +27,8 @@ public class RamblerNewsActivity extends Activity {
     private TextView title;
     private TextView articleView;
     private ImageView imageView;
+    private TextView photoOwner;
+    //private TextView time;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,8 @@ public class RamblerNewsActivity extends Activity {
         title = (TextView) findViewById(R.id.title);
         articleView = (TextView) findViewById(R.id.article_content);
         imageView = (ImageView) findViewById(R.id.imageView);
+        photoOwner = (TextView) findViewById(R.id.photoOwner);
+        //time = (TextView) findViewById(R.id.time);
 
         RamblerPreviewNews ramblerPreviewNews = new RamblerPreviewNews(
                 getIntent().getStringExtra("newsTopic"),
@@ -60,11 +65,9 @@ public class RamblerNewsActivity extends Activity {
 
     private void buildNews(RamblerFullNews ramblerFullNews){
         title.setText(ramblerFullNews.getTitle());
-        Picasso.with(getApplicationContext()).load(ramblerFullNews.getImageRef()).into(imageView);
-        SpannableString ss = new SpannableString(ramblerFullNews.getArticle());
-        // Выставляем отступ для первых трех строк абазца
-        ss.setSpan(new MyLeadingMarginSpan2(4, 10), 0, ss.length(), 0);
-
-        articleView.setText(ss);
+        Picasso.with(getApplicationContext()).load(ramblerFullNews.getImageRef()).resize(650, 350).into(imageView);
+        articleView.setText(ramblerFullNews.getArticle());
+        photoOwner.setText(ramblerFullNews.getPhotoOwner());
+        //time.setText(ramblerFullNews.getTime());
     }
 }

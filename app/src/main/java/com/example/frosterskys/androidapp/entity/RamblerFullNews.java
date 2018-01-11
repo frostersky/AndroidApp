@@ -10,16 +10,18 @@ public class RamblerFullNews {
     private String article;
     private String source;
     private String time;
+    private String photoOwner;
 
     public RamblerFullNews() {
     }
 
-    public RamblerFullNews(String title, String imageRef, String article, String source, String time) {
+    public RamblerFullNews(String title, String imageRef, String article, String source, String time, String photoOwner) {
         this.title = title;
         this.imageRef = imageRef;
         this.article = article;
         this.source = source;
         this.time = time;
+        this.photoOwner = photoOwner;
     }
 
     public String getTitle() {
@@ -60,5 +62,13 @@ public class RamblerFullNews {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getPhotoOwner() {
+        return photoOwner;
+    }
+
+    public void setPhotoOwner(String photoOwner) {
+        this.photoOwner = photoOwner;
     }
 }

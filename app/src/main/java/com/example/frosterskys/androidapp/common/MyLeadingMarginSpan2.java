@@ -12,6 +12,7 @@ import android.text.style.LeadingMarginSpan;
 public class MyLeadingMarginSpan2 implements LeadingMarginSpan.LeadingMarginSpan2 {
     private int margin;
     private int lines;
+    private int lineCounter=0;
     private boolean realyIsFirst = true;
 
     public MyLeadingMarginSpan2(int lines, int margin) {
@@ -23,7 +24,9 @@ public class MyLeadingMarginSpan2 implements LeadingMarginSpan.LeadingMarginSpan
     @Override
     public int getLeadingMargin(boolean first) {
         if (first && realyIsFirst) {
-            realyIsFirst = false;
+            lineCounter++;
+            //realyIsFirst = lineCounter != lines;
+
             /*
              * Данный отступ будет применен к количеству строк
              * возвращаемых getLeadingMarginLineCount()
